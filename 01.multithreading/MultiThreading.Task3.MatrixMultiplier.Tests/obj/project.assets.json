@@ -6213,11 +6213,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\berke\\Desktop\\01.multithreading\\MultiThreading.Task3.MatrixMultiplier.Tests\\MultiThreading.Task3.MatrixMultiplier.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\berke\\Documents\\GitHub\\NetMentoringIntermediate\\01.multithreading\\MultiThreading.Task3.MatrixMultiplier.Tests\\MultiThreading.Task3.MatrixMultiplier.Tests.csproj",
       "projectName": "MultiThreading.Task3.MatrixMultiplier.Tests",
-      "projectPath": "C:\\Users\\berke\\Desktop\\01.multithreading\\MultiThreading.Task3.MatrixMultiplier.Tests\\MultiThreading.Task3.MatrixMultiplier.Tests.csproj",
+      "projectPath": "C:\\Users\\berke\\Documents\\GitHub\\NetMentoringIntermediate\\01.multithreading\\MultiThreading.Task3.MatrixMultiplier.Tests\\MultiThreading.Task3.MatrixMultiplier.Tests.csproj",
       "packagesPath": "C:\\Users\\berke\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\berke\\Desktop\\01.multithreading\\MultiThreading.Task3.MatrixMultiplier.Tests\\obj\\",
+      "outputPath": "C:\\Users\\berke\\Documents\\GitHub\\NetMentoringIntermediate\\01.multithreading\\MultiThreading.Task3.MatrixMultiplier.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\berke\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6234,8 +6234,8 @@
         "netcoreapp2.1": {
           "targetAlias": "netcoreapp2.1",
           "projectReferences": {
-            "C:\\Users\\berke\\Desktop\\01.multithreading\\MultiThreading.Task3.Matrixes\\MultiThreading.Task3.MatrixMultiplier.csproj": {
-              "projectPath": "C:\\Users\\berke\\Desktop\\01.multithreading\\MultiThreading.Task3.Matrixes\\MultiThreading.Task3.MatrixMultiplier.csproj"
+            "C:\\Users\\berke\\Documents\\GitHub\\NetMentoringIntermediate\\01.multithreading\\MultiThreading.Task3.Matrixes\\MultiThreading.Task3.MatrixMultiplier.csproj": {
+              "projectPath": "C:\\Users\\berke\\Documents\\GitHub\\NetMentoringIntermediate\\01.multithreading\\MultiThreading.Task3.Matrixes\\MultiThreading.Task3.MatrixMultiplier.csproj"
             }
           }
         }

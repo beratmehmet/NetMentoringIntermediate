@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\berke\\Desktop\\01.multithreading\\MultiThreading.Task6.Continuation\\MultiThreading.Task6.Continuation.csproj": {}
+    "C:\\Users\\berke\\Documents\\GitHub\\NetMentoringIntermediate\\01.multithreading\\MultiThreading.Task6.Continuation\\MultiThreading.Task6.Continuation.csproj": {}
   },
   "projects": {
-    "C:\\Users\\berke\\Desktop\\01.multithreading\\MultiThreading.Task6.Continuation\\MultiThreading.Task6.Continuation.csproj": {
+    "C:\\Users\\berke\\Documents\\GitHub\\NetMentoringIntermediate\\01.multithreading\\MultiThreading.Task6.Continuation\\MultiThreading.Task6.Continuation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\berke\\Desktop\\01.multithreading\\MultiThreading.Task6.Continuation\\MultiThreading.Task6.Continuation.csproj",
+        "projectUniqueName": "C:\\Users\\berke\\Documents\\GitHub\\NetMentoringIntermediate\\01.multithreading\\MultiThreading.Task6.Continuation\\MultiThreading.Task6.Continuation.csproj",
         "projectName": "MultiThreading.Task6.Continuation",
-        "projectPath": "C:\\Users\\berke\\Desktop\\01.multithreading\\MultiThreading.Task6.Continuation\\MultiThreading.Task6.Continuation.csproj",
+        "projectPath": "C:\\Users\\berke\\Documents\\GitHub\\NetMentoringIntermediate\\01.multithreading\\MultiThreading.Task6.Continuation\\MultiThreading.Task6.Continuation.csproj",
         "packagesPath": "C:\\Users\\berke\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\berke\\Desktop\\01.multithreading\\MultiThreading.Task6.Continuation\\obj\\",
+        "outputPath": "C:\\Users\\berke\\Documents\\GitHub\\NetMentoringIntermediate\\01.multithreading\\MultiThreading.Task6.Continuation\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\berke\\AppData\\Roaming\\NuGet\\NuGet.Config",

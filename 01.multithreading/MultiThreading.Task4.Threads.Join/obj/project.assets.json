@@ -927,11 +927,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\berke\\Desktop\\01.multithreading\\MultiThreading.Task4.Threads.Join\\MultiThreading.Task4.Threads.Join.csproj",
+      "projectUniqueName": "C:\\Users\\berke\\Documents\\GitHub\\NetMentoringIntermediate\\01.multithreading\\MultiThreading.Task4.Threads.Join\\MultiThreading.Task4.Threads.Join.csproj",
       "projectName": "MultiThreading.Task4.Threads.Join",
-      "projectPath": "C:\\Users\\berke\\Desktop\\01.multithreading\\MultiThreading.Task4.Threads.Join\\MultiThreading.Task4.Threads.Join.csproj",
+      "projectPath": "C:\\Users\\berke\\Documents\\GitHub\\NetMentoringIntermediate\\01.multithreading\\MultiThreading.Task4.Threads.Join\\MultiThreading.Task4.Threads.Join.csproj",
       "packagesPath": "C:\\Users\\berke\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\berke\\Desktop\\01.multithreading\\MultiThreading.Task4.Threads.Join\\obj\\",
+      "outputPath": "C:\\Users\\berke\\Documents\\GitHub\\NetMentoringIntermediate\\01.multithreading\\MultiThreading.Task4.Threads.Join\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\berke\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "s1HC+t6puVJ6D92DzBmRBVWY830RWCy197vOHoCuoP3SlQVPgAVVc/Oxa+RjVJVew96Ky3KpAhwCX8rx+r4rYg==",
+  "dgSpecHash": "eMI/7L3xekNfgE+YYV2nVsgca3iMwFiFx0Ckm/kk7weVrCY4tX9StwRlJAkHcHGA0HrlTrGdLN/G3GRb3znJKQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\berke\\Desktop\\01.multithreading\\MultiThreading.Task1.100Tasks\\MultiThreading.Task1.100Tasks.csproj",
+  "projectFilePath": "C:\\Users\\berke\\Documents\\GitHub\\NetMentoringIntermediate\\01.multithreading\\MultiThreading.Task1.100Tasks\\MultiThreading.Task1.100Tasks.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\berke\\.nuget\\packages\\microsoft.netcore.app\\2.1.0\\microsoft.netcore.app.2.1.0.nupkg.sha512",
     "C:\\Users\\berke\\.nuget\\packages\\microsoft.netcore.dotnetapphost\\2.1.0\\microsoft.netcore.dotnetapphost.2.1.0.nupkg.sha512",

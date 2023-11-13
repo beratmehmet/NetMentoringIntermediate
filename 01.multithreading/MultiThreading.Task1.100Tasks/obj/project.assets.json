@@ -927,11 +927,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\berke\\Desktop\\01.multithreading\\MultiThreading.Task1.100Tasks\\MultiThreading.Task1.100Tasks.csproj",
+      "projectUniqueName": "C:\\Users\\berke\\Documents\\GitHub\\NetMentoringIntermediate\\01.multithreading\\MultiThreading.Task1.100Tasks\\MultiThreading.Task1.100Tasks.csproj",
       "projectName": "MultiThreading.Task1.100Tasks",
-      "projectPath": "C:\\Users\\berke\\Desktop\\01.multithreading\\MultiThreading.Task1.100Tasks\\MultiThreading.Task1.100Tasks.csproj",
+      "projectPath": "C:\\Users\\berke\\Documents\\GitHub\\NetMentoringIntermediate\\01.multithreading\\MultiThreading.Task1.100Tasks\\MultiThreading.Task1.100Tasks.csproj",
       "packagesPath": "C:\\Users\\berke\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\berke\\Desktop\\01.multithreading\\MultiThreading.Task1.100Tasks\\obj\\",
+      "outputPath": "C:\\Users\\berke\\Documents\\GitHub\\NetMentoringIntermediate\\01.multithreading\\MultiThreading.Task1.100Tasks\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\berke\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\berke\\Desktop\\01.multithreading\\MultiThreading.Task2.Chaining\\MultiThreading.Task2.Chaining.csproj": {}
+    "C:\\Users\\berke\\Documents\\GitHub\\NetMentoringIntermediate\\01.multithreading\\MultiThreading.Task2.Chaining\\MultiThreading.Task2.Chaining.csproj": {}
   },
   "projects": {
-    "C:\\Users\\berke\\Desktop\\01.multithreading\\MultiThreading.Task2.Chaining\\MultiThreading.Task2.Chaining.csproj": {
+    "C:\\Users\\berke\\Documents\\GitHub\\NetMentoringIntermediate\\01.multithreading\\MultiThreading.Task2.Chaining\\MultiThreading.Task2.Chaining.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\berke\\Desktop\\01.multithreading\\MultiThreading.Task2.Chaining\\MultiThreading.Task2.Chaining.csproj",
+        "projectUniqueName": "C:\\Users\\berke\\Documents\\GitHub\\NetMentoringIntermediate\\01.multithreading\\MultiThreading.Task2.Chaining\\MultiThreading.Task2.Chaining.csproj",
         "projectName": "MultiThreading.Task2.Chaining",
-        "projectPath": "C:\\Users\\berke\\Desktop\\01.multithreading\\MultiThreading.Task2.Chaining\\MultiThreading.Task2.Chaining.csproj",
+        "projectPath": "C:\\Users\\berke\\Documents\\GitHub\\NetMentoringIntermediate\\01.multithreading\\MultiThreading.Task2.Chaining\\MultiThreading.Task2.Chaining.csproj",
         "packagesPath": "C:\\Users\\berke\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\berke\\Desktop\\01.multithreading\\MultiThreading.Task2.Chaining\\obj\\",
+        "outputPath": "C:\\Users\\berke\\Documents\\GitHub\\NetMentoringIntermediate\\01.multithreading\\MultiThreading.Task2.Chaining\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\berke\\AppData\\Roaming\\NuGet\\NuGet.Config",

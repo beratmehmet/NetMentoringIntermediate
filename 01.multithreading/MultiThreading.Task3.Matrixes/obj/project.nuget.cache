@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NJC/JpB0YYo3Ja0SuRD8DALFza7gNaIgW7ThzSujLo/w9P28nFkr/rdZz9X7fbYePz3NzJqt9TaTIadHbPRy5g==",
+  "dgSpecHash": "HV8/SdBrJ4lYzGOVJW2BEl79AGojT4Fl94zzS6KbnVlHoQmZnOCk9PlY79LkY51BJvsdkZuuKQysqUYoEudLUA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\berke\\Desktop\\01.multithreading\\MultiThreading.Task3.Matrixes\\MultiThreading.Task3.MatrixMultiplier.csproj",
+  "projectFilePath": "C:\\Users\\berke\\Documents\\GitHub\\NetMentoringIntermediate\\01.multithreading\\MultiThreading.Task3.Matrixes\\MultiThreading.Task3.MatrixMultiplier.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\berke\\.nuget\\packages\\microsoft.netcore.app\\2.1.0\\microsoft.netcore.app.2.1.0.nupkg.sha512",
     "C:\\Users\\berke\\.nuget\\packages\\microsoft.netcore.dotnetapphost\\2.1.0\\microsoft.netcore.dotnetapphost.2.1.0.nupkg.sha512",
