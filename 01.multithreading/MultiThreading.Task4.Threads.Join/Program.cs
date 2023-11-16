@@ -10,6 +10,7 @@
  */
 
 using System;
+using System.Threading;
 
 namespace MultiThreading.Task4.Threads.Join
 {
@@ -26,9 +27,34 @@ namespace MultiThreading.Task4.Threads.Join
 
             Console.WriteLine();
 
-            // feel free to add your code
+            DecrementState(10);
+            DecrementStateWithThreadPool(10);
 
             Console.ReadLine();
+        }
+
+        static SemaphoreSlim semaphoreSlim = new SemaphoreSlim(1);
+        private static void DecrementState(object state)
+        {
+
+            if ((int)state > 0) 
+            {
+                Thread t = new Thread(DecrementState);
+                t.Start((int)state - 1);
+                t.Join();
+            }
+            Console.WriteLine($"Thread State: {state}");
+        }
+        
+        private static void DecrementStateWithThreadPool(object state)
+        {
+            semaphoreSlim.Wait();
+            if ((int)state > 0)
+            {
+                ThreadPool.QueueUserWorkItem(new WaitCallback(DecrementStateWithThreadPool), (int)state - 1);
+            }
+            semaphoreSlim.Release();
+            Console.WriteLine($"ThreadPool State: {state}");
         }
     }
 }
