@@ -1,3 +1,5 @@
 is_global = true
 build_property.RootNamespace = MultiThreading.Task3.MatrixMultiplier
-build_property.ProjectDir = C:\Users\berke\Documents\GitHub\NetMentoringIntermediate\01.multithreading\MultiThreading.Task3.Matrixes\
+build_property.ProjectDir = D:\Mentorings\BeratMehmetTopuz\Task1\01.multithreading\MultiThreading.Task3.Matrixes\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
