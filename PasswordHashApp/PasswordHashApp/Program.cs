@@ -6,16 +6,18 @@ Console.WriteLine(result);
 string GeneratePasswordHashUsingSalt(string passwordText, byte[] salt)
 {
 
-    var iterate = 10000;
-    var pbkdf2 = new Rfc2898DeriveBytes(passwordText, salt, iterate);
-    byte[] hash = pbkdf2.GetBytes(20);
+    const int SaltSize = 16;
+    const int HashSize = 20;
+    const int iterate = 10000;
 
-    byte[] hashBytes = new byte[36];
-    Array.Copy(salt, 0, hashBytes, 0, 16);
-    Array.Copy(hash, 0, hashBytes, 16, 20);
+    byte[] hashBytes = new byte[SaltSize + HashSize];
+    using (var pbkdf2 = new Rfc2898DeriveBytes(passwordText, salt, iterate))
+    {
+        byte[] hash = pbkdf2.GetBytes(HashSize);
+        Buffer.BlockCopy(salt, 0, hashBytes, 0, SaltSize);
+        Buffer.BlockCopy(hash, 0, hashBytes, SaltSize, HashSize);
+    }
 
-    var passwordHash = Convert.ToBase64String(hashBytes);
-
-    return passwordHash;
+    return Convert.ToBase64String(hashBytes);
 
 }
