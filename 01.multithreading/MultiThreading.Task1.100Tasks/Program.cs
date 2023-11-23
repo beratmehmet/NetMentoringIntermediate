@@ -37,9 +37,9 @@ namespace MultiThreading.Task1._100Tasks
                 
                 tasks[i] = Task.Run(() =>
                 {
-                    for (int j = 0; j < MaxIterationsCount; j++)
+                    for (int j = 1; j <= MaxIterationsCount; j++)
                     {
-                        Output(taskNumber, j+1);
+                        Output(taskNumber, j + 1);
                     }
                 });
             }

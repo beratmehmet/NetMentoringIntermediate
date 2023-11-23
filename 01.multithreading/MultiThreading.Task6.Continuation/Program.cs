@@ -33,36 +33,57 @@ namespace MultiThreading.Task6.Continuation
                 {
                     Console.WriteLine("What is the expected behaviour of the antecedent?");
                     Console.WriteLine("[1]Ran to completion [2]Faulted [3]Cancelled");
-                    int input = Convert.ToInt32(Console.ReadLine());
 
-                    if (input == 1)
-                    {
-                        Console.WriteLine("Task Completed Successfully");
-                    }
-                    else if (input == 2)
-                    {
-                        Console.WriteLine("Task Faulted");
-                        throw new Exception("Task Faulted");
-                    }
-                    else if (input == 3)
-                    {
-                        Console.WriteLine("Task Cancelled");
-                        tokenSource2.Cancel();
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid Input!!!");
-                    }
-                    ct.ThrowIfCancellationRequested();
-                }, tokenSource2.Token);
+                    var input = Convert.ToInt32(Console.ReadLine());
 
-                Task continuation1 = antecedent.ContinueWith(t => Console.WriteLine("Continuation-1 Executed"), TaskContinuationOptions.None);
-                Task continuation2 = antecedent.ContinueWith(t => Console.WriteLine("Continuation-2 Executed: Antecedent NotRanToCompletion"), TaskContinuationOptions.NotOnRanToCompletion);
-                Task continuation3 = antecedent.ContinueWith(t => Console.WriteLine("Continuation-3 Executed: Antecedent Faulted"), TaskContinuationOptions.OnlyOnFaulted | TaskContinuationOptions.ExecuteSynchronously);
-                Task continuation4 = antecedent.ContinueWith(t => Console.WriteLine("Continuation-4 Executed: Antecedent Canceled"), TaskContinuationOptions.OnlyOnCanceled);
+                    switch (input)
+                    {
+                        case 1:
+                            Console.WriteLine("Task Completed Successfully");
+                            break;
+                        case 2:
+                            Console.WriteLine("Task Faulted");
+                            throw new Exception("Task Faulted");
+                        case 3:
+                            Console.WriteLine("Task Cancelled");
+                            tokenSource2.Cancel();
+                            break;
+                        default:
+                            Console.WriteLine("Invalid Input!!!");
+                            break;
+                    }
 
-                 antecedent.Wait();
-                
+                    try
+                    {
+                        ct.ThrowIfCancellationRequested();
+                    }
+                    catch (OperationCanceledException e)
+                    {
+                        Console.WriteLine($"{nameof(OperationCanceledException)} thrown with message: {e.Message}");
+                    }
+
+
+                }, ct);
+
+                antecedent.ContinueWith(t => Console.WriteLine("Continuation-1 Executed"), TaskContinuationOptions.None);
+                antecedent.ContinueWith(t => Console.WriteLine("Continuation-2 Executed: Antecedent NotRanToCompletion"), TaskContinuationOptions.NotOnRanToCompletion);
+                antecedent.ContinueWith(t => Console.WriteLine("Continuation-3 Executed: Antecedent Faulted"), TaskContinuationOptions.OnlyOnFaulted | TaskContinuationOptions.ExecuteSynchronously);
+                antecedent.ContinueWith(t =>
+                {
+                    Console.WriteLine("Continuation-4 Executed: Antecedent Canceled");
+                    tokenSource2.Dispose();
+                    tokenSource2 = new CancellationTokenSource();
+                    ct = tokenSource2.Token;
+                }, TaskContinuationOptions.OnlyOnCanceled);
+
+                try
+                {
+                    antecedent.Wait();
+                }
+                catch (AggregateException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
             }
         }
     }

@@ -27,8 +27,10 @@ namespace MultiThreading.Task4.Threads.Join
 
             Console.WriteLine();
 
-            DecrementState(10);
-            DecrementStateWithThreadPool(10);
+            const int threadCount = 10;
+
+            DecrementState(threadCount);
+            DecrementStateWithThreadPool(threadCount);
 
             Console.ReadLine();
         }
@@ -36,25 +38,24 @@ namespace MultiThreading.Task4.Threads.Join
         static SemaphoreSlim semaphoreSlim = new SemaphoreSlim(1);
         private static void DecrementState(object state)
         {
-
-            if ((int)state > 0) 
+            if ((int)state > 0)
             {
                 Thread t = new Thread(DecrementState);
+
                 t.Start((int)state - 1);
+                Console.WriteLine($"Thread State: {state}");
                 t.Join();
             }
-            Console.WriteLine($"Thread State: {state}");
         }
-        
         private static void DecrementStateWithThreadPool(object state)
         {
             semaphoreSlim.Wait();
             if ((int)state > 0)
             {
                 ThreadPool.QueueUserWorkItem(new WaitCallback(DecrementStateWithThreadPool), (int)state - 1);
+                Console.WriteLine($"ThreadPool State: {state}");
             }
             semaphoreSlim.Release();
-            Console.WriteLine($"ThreadPool State: {state}");
         }
     }
 }

@@ -25,51 +25,46 @@ namespace MultiThreading.Task2.Chaining
 
             Random random = new Random();
 
-            Task<Int32[]> arrayTask = Task.Run(() => {
-                return generateArray(10, random);
-            });
-
-            Task<Int32[]> multiplyTask = arrayTask.ContinueWith<Int32[]>((antecedent) =>
+            var arrayTask = Task.Run(() =>
             {
-                int rndInt = getRandomInteger(random);
-                return antecedent.Result.Select(x => x * rndInt).ToArray();
-            });
+                var randomArray = GenerateArray(10, random);
+                Console.WriteLine("Random Array: [{0}]", string.Join(", ", randomArray));
 
-            Task<Int32[]> sortTask = multiplyTask.ContinueWith<Int32[]>((antecedent) =>
+                return randomArray;
+            }).ContinueWith((antecedent) =>
+            {
+                int randomInt = GetRandomInteger(random);
+                var multipliedArray = antecedent.Result.Select(x => x * randomInt).ToArray();
+                Console.WriteLine("Multiplied Array: [{0}]", string.Join(", ", multipliedArray));
+
+                return multipliedArray;
+            }).ContinueWith((antecedent) =>
             {
                 Array.Sort(antecedent.Result);
+                Console.WriteLine("Sorted Array: [{0}]", string.Join(", ", antecedent.Result));
+
                 return antecedent.Result;
-            });
-
-            Task<Double> avgTask = sortTask.ContinueWith<Double>((antecedent) =>
+            }).ContinueWith((antecedent) =>
             {
-                return antecedent.Result.Average();
+                var average = antecedent.Result.Average();
+                Console.WriteLine("Avg: {0}", average);
+
+                return average;
             });
-
-            Console.WriteLine("Random Array: [{0}]", string.Join(", ", arrayTask.Result));
-
-            Console.WriteLine("Multiplied Array: [{0}]", string.Join(", ", multiplyTask.Result));
-
-            Console.WriteLine("Sorted Array: [{0}]", string.Join(", ", sortTask.Result));
-
-            Console.WriteLine("Avg: {0}", avgTask.Result);
 
             Console.ReadLine();
         }
 
-        public static int[] generateArray(int count, Random random)
+        public static int[] GenerateArray(int count, Random random)
         {
-            int[] values = new int[count];
+            var values = new int[count];
 
             for (int i = 0; i < count; ++i)
-                values[i] = getRandomInteger(random);
+                values[i] = GetRandomInteger(random);
 
             return values;
         }
 
-        public static int getRandomInteger(Random random)
-        {
-            return random.Next();
-        }
+        public static int GetRandomInteger(Random random) => random.Next();
     }
 }

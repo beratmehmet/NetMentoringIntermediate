@@ -40,7 +40,7 @@ namespace MultiThreading.Task3.MatrixMultiplier
             Console.WriteLine("resultMatrix:");
             resultMatrix.Print();
             Console.WriteLine("resultMatrixParallel:");
-            resultMatrix.Print();
+            resultMatrixParallel.Print();
         }
     }
 }

@@ -42,7 +42,7 @@ namespace MultiThreading.Task3.MatrixMultiplier.Tests
 
             var timeParallel = sw.ElapsedMilliseconds;
 
-            Assert.AreEqual(time > timeParallel, true);
+            Assert.IsTrue(time > timeParallel);
         }
 
         #region private methods
