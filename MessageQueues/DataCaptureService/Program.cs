@@ -33,7 +33,7 @@ watcher.Created += (object sender, FileSystemEventArgs e) =>
     Console.WriteLine($"Detected: {e.FullPath}");
     using (FileStream fStream = new FileStream(e.FullPath, FileMode.Open))
     {
-        byte[] byteArray = new byte[1024];
+        byte[] byteArray = new byte[fStream.Length];
 
         fStream.Read(byteArray, 0, byteArray.Length);
         channel.BasicPublish(exchangeName, $"file{Path.GetExtension(e.FullPath)}", null, byteArray);
