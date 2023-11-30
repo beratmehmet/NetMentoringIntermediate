@@ -106,6 +106,12 @@ namespace Expressions.Task3.E3SQueryProvider
                         throw new NotSupportedException($"{node.Left} == {node.Right} operand sequence is not supported");
                     }
 
+                case ExpressionType.AndAlso:
+                    Translate(node.Left);
+                    _resultStringBuilder.Append(",");
+                    Translate(node.Right);
+                    break;
+
                 default:
                     throw new NotSupportedException($"Operation '{node.NodeType}' is not supported");
             };
