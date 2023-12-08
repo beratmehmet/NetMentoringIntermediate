@@ -7,6 +7,8 @@
  * The results could be printed in console or checked via Debugger using any Visualizer.
  */
 using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace ExpressionTrees.Task1.ExpressionsTransformer
 {
@@ -17,7 +19,14 @@ namespace ExpressionTrees.Task1.ExpressionsTransformer
             Console.WriteLine("Expression Visitor for increment/decrement.");
             Console.WriteLine();
 
-            // todo: feel free to add your code here
+            Expression<Func<int, int, int>> sourceLambda = (x, y) => 1 - x - 1 + 8 * y + 1 + 5 * 2;
+
+            var parameterDictionary = new Dictionary<string, object>() { { "x", 5 }, { "y", 3 } };
+
+            Expression<Func<int, int, int>> lambda =
+                 IncDecExpressionVisitor.TransformLambdaExpression(sourceLambda, parameterDictionary);
+
+            Console.WriteLine(lambda.ToString());
 
             Console.ReadLine();
         }
