@@ -8,9 +8,13 @@
  */
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Expressions.Task3.E3SQueryProvider.Models.Entities;
+using Expressions.Task3.E3SQueryProvider.Models.Request;
+using Microsoft.AspNetCore.WebUtilities;
+using Newtonsoft.Json;
 using Xunit;
 
 namespace Expressions.Task3.E3SQueryProvider.Test
@@ -35,7 +39,30 @@ namespace Expressions.Task3.E3SQueryProvider.Test
              */
 
             // todo: create asserts for this test by yourself, because they will depend on your final implementation
-            throw new NotImplementedException("Please implement this test and the appropriate functionality");
+
+            var baseAddress = "http://www.testbmt.com";
+            string FTSSearchTemplate = @"/searchFts";
+            var metaTypeName = "";
+
+            var ftsRequestGenerator = new FtsRequestGenerator(baseAddress);
+            var ftsTestQuery = new FtsQueryRequest()
+            {
+                Start = 0,
+                Limit = 10,
+                Statements = new List<Statement>
+                {
+                    new Statement {Query = "Workstation:(EPRUIZHW006)"},
+                    new Statement {Query = "Manager:(John*)"}
+                }
+            };
+
+            var ftsQueryRequestString = JsonConvert.SerializeObject(ftsTestQuery);
+            var testUri = new Uri(QueryHelpers.AddQueryString($"{baseAddress}{FTSSearchTemplate}", new Dictionary<string, string> { { "metaType", metaTypeName }, { "query", ftsQueryRequestString } }));
+
+            var translatedExpression = translator.Translate(expression);
+            var ftsUriResult = ftsRequestGenerator.GenerateRequestUrl(typeof(EmployeeEntity), translatedExpression);
+
+            Assert.Equal(testUri, ftsUriResult);
         }
 
         #endregion
