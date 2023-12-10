@@ -1,7 +1,12 @@
-﻿namespace ExpressionTrees.Task2.ExpressionMapping.Tests.Models
+﻿using System.Collections.Generic;
+
+namespace ExpressionTrees.Task2.ExpressionMapping.Tests.Models
 {
     internal class Bar
     {
-        // add here some other properties
+        public string Id;
+        public string FullName;
+        public bool IsValid;
+        public List<int> numbers;
     }
 }
