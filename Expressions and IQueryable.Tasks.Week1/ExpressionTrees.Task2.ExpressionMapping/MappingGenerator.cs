@@ -13,7 +13,6 @@ namespace ExpressionTrees.Task2.ExpressionMapping
             var sourceType = typeof(TSource);
             var destinationType = typeof(TDestination);
             var sourceParam = Expression.Parameter(sourceType);
-            var targetVariable = Expression.Variable(destinationType, "target");
             var newExpression = Expression.New(destinationType.GetConstructor(Type.EmptyTypes));
 
             List<MemberBinding> bindings = new List<MemberBinding>();
@@ -39,19 +38,23 @@ namespace ExpressionTrees.Task2.ExpressionMapping
                 }
             }
 
-            var body = Expression.MemberInit(newExpression, bindings);
-            var assignExpr = Expression.Assign(targetVariable, body);
-
-            if (mapping != null)
-            {
-                var customMappingExpr = Expression.Invoke(Expression.Constant(mapping), sourceParam, targetVariable);
-
-                var blockExpr = Expression.Block(new[] { targetVariable }, assignExpr, customMappingExpr, targetVariable);
-
-                return new Mapper<TSource, TDestination>(Expression.Lambda<Func<TSource, TDestination>>(blockExpr, sourceParam).Compile());
-            }
+            var body = CreateMappingExpression(sourceParam, Expression.MemberInit(newExpression, bindings), mapping);
 
             return new Mapper<TSource, TDestination>(Expression.Lambda<Func<TSource, TDestination>>(body, false, sourceParam).Compile());
+        }
+
+        private Expression CreateMappingExpression<TSource, TDestination>(ParameterExpression sourceParam, Expression body, Action<TSource, TDestination> mapping)
+        {
+            if(mapping != null)
+            {
+                var targetVariable = Expression.Variable(typeof(TDestination), "target");
+                var assignExpr = Expression.Assign(targetVariable, body);
+                var customMappingExpr = Expression.Invoke(Expression.Constant(mapping), sourceParam, targetVariable);
+
+                return Expression.Block(new[] { targetVariable }, assignExpr, customMappingExpr, targetVariable);
+            }
+
+            return body;
         }
     }
 }

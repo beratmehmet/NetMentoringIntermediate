@@ -5,6 +5,13 @@ namespace ExpressionTrees.Task1.ExpressionsTransformer
 {
     public class IncDecExpressionVisitor : ExpressionVisitor
     {
+        private readonly IReadOnlyDictionary<string, object> _parameterReplacements;
+
+        private IncDecExpressionVisitor(Dictionary<string, object> parameterReplacements)
+        {
+            _parameterReplacements = parameterReplacements;
+        }
+
         public static Expression<TDelegate> TransformLambdaExpression<TDelegate>(
         Expression<TDelegate> sourceExpression,
         Dictionary<string, object> parameterReplacements)
@@ -13,13 +20,6 @@ namespace ExpressionTrees.Task1.ExpressionsTransformer
             Expression translatedBody = translator.Visit(sourceExpression.Body);
 
             return Expression.Lambda<TDelegate>(translatedBody, sourceExpression.Parameters); ;
-        }
-
-        private readonly IReadOnlyDictionary<string, object> _parameterReplacements;
-
-        private IncDecExpressionVisitor(Dictionary<string, object> parameterReplacements)
-        {
-            _parameterReplacements = parameterReplacements;
         }
 
         protected override Expression VisitParameter(ParameterExpression node)
@@ -40,9 +40,7 @@ namespace ExpressionTrees.Task1.ExpressionsTransformer
                 {
                     if (node.Left is ParameterExpression)
                     {
-                        var unaryNodeType = node.NodeType == ExpressionType.Add
-                        ? ExpressionType.Increment
-                        : ExpressionType.Decrement;
+                        var unaryNodeType = GetUnaryNodeType(node);
 
                         return Expression.MakeUnary(unaryNodeType, Visit(node.Left), node.Type);
                     }
@@ -52,24 +50,25 @@ namespace ExpressionTrees.Task1.ExpressionsTransformer
 
                         right = Visit(leftNode.Right);
 
-                        var unaryNodeType = node.NodeType == ExpressionType.Add
-                        ? ExpressionType.Increment
-                        : ExpressionType.Decrement;
+                        var unaryNodeType = GetUnaryNodeType(node);
+
                         right = Expression.MakeUnary(unaryNodeType, right, node.Type);
 
-                        if (leftNode.NodeType == ExpressionType.Add)
-                        {
-                            return Expression.Add(Visit(leftNode.Left), right);
-                        }
-                        else
-                        {
-                            return Expression.Subtract(Visit(leftNode.Left), right);
-                        }
+                        return leftNode.NodeType == ExpressionType.Add
+                        ? Expression.Add(Visit(leftNode.Left), right)
+                        : Expression.Subtract(Visit(leftNode.Left), right);
                     }
                 }
             }
 
             return base.VisitBinary(node);
+        }
+
+        private ExpressionType GetUnaryNodeType(Expression node)
+        {
+            return node.NodeType == ExpressionType.Add
+                        ? ExpressionType.Increment
+                        : ExpressionType.Decrement;
         }
     }
 }
