@@ -1,27 +1,32 @@
-#See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
+# Use the official .NET SDK image as a build environment.
+# This image includes the .NET SDK and all the tools needed to build and publish your app.
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
 
-#Depending on the operating system of the host machines(s) that will build or run the containers, the image specified in the FROM statement may need to be changed.
-#For more information, please see https://aka.ms/containercompat
-
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+# Set the working directory to /app
 WORKDIR /app
+
+# Copy the project file and restore dependencies
+COPY *.csproj ./
+RUN dotnet restore
+
+# Copy the remaining source code
+COPY . ./
+
+# Build the app
+RUN dotnet publish -c Release -o out
+
+# Use the official ASP.NET Core runtime image as the base image for the final image.
+# This image includes the .NET runtime and all the libraries needed to run your app.
+FROM mcr.microsoft.com/dotnet/aspnet:6.0
+
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the published app from the build environment to the final image
+COPY --from=build-env /app/out .
+
+# Expose port 80 to the outside world
 EXPOSE 80
-EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-ARG BUILD_CONFIGURATION=Release
-WORKDIR /src
-COPY ["HostingSampleWebApp/HostingSampleWebApp.csproj", "HostingSampleWebApp/"]
-RUN dotnet restore "./HostingSampleWebApp/./HostingSampleWebApp.csproj"
-COPY . .
-WORKDIR "/src/HostingSampleWebApp"
-RUN dotnet build "./HostingSampleWebApp.csproj" -c %BUILD_CONFIGURATION% -o /app/build
-
-FROM build AS publish
-ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./HostingSampleWebApp.csproj" -c %BUILD_CONFIGURATION% -o /app/publish /p:UseAppHost=false
-
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
+# Start the app
 ENTRYPOINT ["dotnet", "HostingSampleWebApp.dll"]
